@@ -1,5 +1,20 @@
 
-# 📊 Crypto Market Analysis & Dashboard (Power BI + Python + MySQL)
+#  Cryptocurrency Market Analysis & Dashboard  
+An end-to-end platform using Python, MySQL, and Power BI to analyze and visualize dynamic crypto market data.
+
+##  Quick Start
+
+### Prerequisites
+- Python 3.8+
+- MySQL Server
+- Power BI Desktop
+
+### Installation
+```bash
+git clone https://github.com/Phonex12/Cryptocurrency-Analysis.git
+cd Cryptocurrency-Analysis
+pip install -r requirements.txt
+```
 
 ## 🚀 Project Overview
 This project is an end-to-end **Cryptocurrency Market Analysis Platform** that fetches real-time data from the **CoinMarketCap API**, stores it in a **MySQL database**, performs **Exploratory Data Analysis (EDA) in Python**, and visualizes insights through a **Power BI Dashboard**.
@@ -223,17 +238,16 @@ except requests.exceptions.RequestException as e:
 except Exception as e:
     print(f"❌ Unknown Error: {e}")
 
-````
+```
 
 
 ## 🗄️ MySQL Database Setup
 
 ### Create Database
 
-```sql
 CREATE DATABASE crypto;
-USE crypto;
-```
+-- then create required tables (see README scripts)
+
 
 ### Create Tables
 
@@ -312,7 +326,21 @@ For making the analysis simple I have also created a .csv file of the date uptil
 
 **All The analysis of the data is added to the EDA Crypto Data/Insights**
 
-![Bitcoin Trading Volume](Insights/Bitcoin%20Trading%20Volume%20Over%20Time.png)
+##  Analysis Highlights
+
+### Bitcoin Trading Volume Over Time  
+![Bitcoin Trading Volume](Insights/Bitcoin_Trading_Volume_Over_Time.png)
+
+### Altcoin Volume vs. Price Distribution  
+![Alt vs Price Distribution](Insights/alt_volume_vs_price_distribution.png)
+
+
+##  Key Notebooks
+
+- [Bitcoin Price Analysis](EDA_Crypto_Data/bitcoin_price_analysis.ipynb)
+- [Top 5 Coin Analysis](EDA_Crypto_Data/top5_coin_analysis.ipynb)
+- [Volume vs Price EDA](EDA_Crypto_Data/Volume_vs_price.ipynb)
+
 
 ## 📈 Power BI Dashboard
 
@@ -386,15 +414,10 @@ Dashboard/
 
 ---
 
-## 📜 License
+##  License
+This project is licensed under the MIT License — see [LICENSE](LICENSE) for details.
 
-This project is licensed under the **MIT License** – you are free to use, modify, and distribute with attribution.
+##  Contributors
+- Pallav Kulkanri – Developer & Analyst
 
----
-
-## 🙌 Contributors
-
-* **Pallav Kulkanri** – Developer & Analyst
-
----
 
