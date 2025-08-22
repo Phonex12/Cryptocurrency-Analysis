@@ -278,17 +278,34 @@ Python was used for EDA before connecting data to Power BI. Key steps:
 Example EDA Code:
 
 ```python
-import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-df = pd.read_sql("SELECT * FROM crypto_price", db)
+plt.figure(figsize=(12,6))
 
-# Correlation heatmap
-plt.figure(figsize=(10,6))
-sns.heatmap(df.corr(), annot=True, cmap="coolwarm")
-plt.title("Correlation Between Crypto Metrics")
+# --- Plot VOLUME (primary y-axis, log scale) ---
+ax1 = plt.gca()
+sns.lineplot(data=t2, x='date', y='total_volume', color='gold', label='Volume', ax=ax1)
+ax1.fill_between(t2['date'], t2['total_volume'], color='gold', alpha=0.2)
+ax1.set_yscale('log')
+ax1.set_ylabel("Trading Volume (log scale)", fontweight='bold')
+ax1.legend(loc="upper left")
+
+# --- Plot PRICE (secondary y-axis, linear scale) ---
+ax2 = ax1.twinx()
+sns.lineplot(data=t2, x='date', y='price', color='green', label='Price', ax=ax2)
+ax2.fill_between(t2['date'], t2['price'], color='green', alpha=0.3)
+ax2.set_ylabel("Price (USD)", fontweight='bold')
+ax2.legend(loc="upper right")
+
+# --- Title, labels, grid ---
+plt.title("Bitcoin Trading Volume (log) & Price Over Time", 
+          fontsize=18, fontweight='bold', fontfamily='Times New Roman')
+ax1.set_xlabel("Year", fontweight='bold')
+plt.grid(True, which="both", linestyle="--", alpha=0.5)
+
 plt.show()
+
 ```
 ---
 For making the analysis simple I have also created a .csv file of the date uptill the date I am creating this repo.
@@ -328,22 +345,43 @@ Total Market Cap = SUM(marketcap_data[market_cap])
 ## 📂 File Structure
 
 ```
-crypto-dashboard/
+Dashboard/
+│── Data/
+│ ├── crypto_date.csv # Final cleaned dataset
 │
-├── data/
-│   ├── raw_data.csv
-│   ├── processed_data.csv
+│── Data_Collection/
+│ ├── api_fetching.py # Script to fetch data from API
+│ ├── data_cleanup.py # Script to clean raw data
+│ ├── market_cap.py # Script to fetch market cap data
 │
-├── scripts/
-│   ├── fetch_data.py
-│   ├── eda_visuals.py
+│── EDA_Crypto_Data/ # (⚡ recommend renaming to remove spaces)
+│ ├── bitcoin_hist.ipynb # Historical Bitcoin analysis
+│ ├── bitcoin_price_analysis.ipynb # Bitcoin price analysis
+│ ├── Bitcoin_vs_altcoin.ipynb # Compare Bitcoin with Altcoins
+│ ├── Coins_price_correlation.ipynb # Correlation between coin prices
+│ ├── coins_stability.ipynb # Stability analysis of coins
+│ ├── Top_10_coins_by_volume.ipynb # Top 10 coins by trading volume
+│ ├── top5_coin_analysis.ipynb # Analysis of top 5 coins
+│ ├── Total_volume_analysis.ipynb # Total market trading volume
+│ ├── Volume_vs_price.ipynb # Volume vs Price analysis
 │
-├── dashboard/
-│   ├── crypto_dashboard.pbix
-│   ├── final_dashboard.pdf
+│── Insights/ # Visualization outputs (PNG plots)
+│ ├── alt_volume_vs_price_distribution.png
+│ ├── avg_bitcoin_price.png
+│ ├── Bitcoin_Trading_Volume_Over_Time.png
+│ ├── Bitcoin_vs_Total_MarketCap.png
+│ ├── change_altcoin_vs_bitcoin.png
+│ ├── change_in_price_distribution.png
+│ ├── plot1_avg_price.png
+│ ├── price_distribution.png
+│ ├── Price_Stability_Chart.png
+│ ├── total_marketcap_distribution.png
 │
-├── README.md
-├── LICENSE
+│── Images/
+│ ├── preview.png (optional UI/dashboard preview image)
+│
+│── Preview.pdf # Report preview
+│── README.md # Project documentation
 ```
 
 ---
@@ -356,13 +394,7 @@ This project is licensed under the **MIT License** – you are free to use, modi
 
 ## 🙌 Contributors
 
-* **Your Name** – Developer & Analyst
+* **Pallav Kulkanri** – Developer & Analyst
 
 ---
 
-```
-
----
-
-✅ This README is **comprehensive** — it covers **data fetching, MySQL schema, automation, EDA, Power BI, file structure, and license**.   
----
