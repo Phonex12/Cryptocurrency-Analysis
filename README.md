@@ -312,7 +312,7 @@ For making the analysis simple I have also created a .csv file of the date uptil
 
 **All The analysis of the data is added to the EDA Crypto Data/Insights**
 
-![Bitcoin Trading Volume](EInsights/Bitcoin%20Trading%20Volume%20Over%20Time.png)
+![Bitcoin Trading Volume](Insights/Bitcoin%20Trading%20Volume%20Over%20Time.png)
 
 ## 📈 Power BI Dashboard
 
