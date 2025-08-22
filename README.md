@@ -294,7 +294,9 @@ plt.show()
 For making the analysis simple I have also created a .csv file of the date uptill the date I am creating this repo.
 
 **All The analysis of the data is added to the EDA Crypto Data/Insights**
-![Dashboard](EDA Crypto Data\Insights\alt_volume_vs_price_distribution.png)
+
+![Bitcoin Trading Volume](EDA%20Crypto%20Data/Insights/Bitcoin%20Trading%20Volume%20Over%20Time.png)
+
 ## 📈 Power BI Dashboard
 
 ### Pages
